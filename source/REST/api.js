@@ -20,10 +20,12 @@ export const api = {
                 "Content-Type": "application/json",
                 Authorization:  TOKEN,
             },
-            body: JSON.stringify([task]),
+            body:    JSON.stringify([task]),
         });
 
-        return response.json();
+        const { data: [updatedTask] } = await response.json();
+
+        return updatedTask;
     },
 
     completeAllTasks: async (tasks) => {
@@ -34,27 +36,27 @@ export const api = {
                     "Content-Type": "application/json",
                     Authorization:  TOKEN,
                 },
-                body: JSON.stringify([task]),
+                body:    JSON.stringify([task]),
             }).then((response) => {
                 return response.json();
             })
         );
     },
-    createTask: async (message) => {
+    createTask:       async (message) => {
         const response = await fetch(MAIN_URL, {
             method:  "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization:  TOKEN,
             },
-            body: JSON.stringify({ message }),
+            body:    JSON.stringify({ message }),
         });
 
         const { data: task } = await response.json();
 
         return task;
     },
-    removeTask: async (id) => {
+    removeTask:       async (id) => {
         const response = await fetch(`${MAIN_URL}/${id}`, {
             method:  "DELETE",
             headers: {
