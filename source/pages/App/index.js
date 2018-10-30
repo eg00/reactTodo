@@ -1,25 +1,19 @@
 // Core
-import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+import React, { Component } from "react";
+import { hot } from "react-hot-loader";
 
-@hot(module)
-export default class App extends Component {
+// Components
+import Scheduler from "components/Scheduler";
+import Catcher from "components/Catcher";
+
+class App extends Component {
     render () {
         return (
-            <h1
-                style = { {
-                    display:         'flex',
-                    justifyContent:  'center',
-                    alignItems:      'center',
-                    minHeight:       '100vh',
-                    backgroundColor: '#070A13',
-                    color:           'white',
-                    fontSize:        24,
-                    fontWeight:      '600',
-                    textAlign:       'center',
-                } }>
-                Персональный проект: стартовая точка
-            </h1>
+            <Catcher>
+                <Scheduler />
+            </Catcher>
         );
     }
 }
+
+export default hot(module)(App);
